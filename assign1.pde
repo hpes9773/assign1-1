@@ -10,7 +10,18 @@ int h = 50;
 // declare variables
 // --------------------------------------------
 // put your code inside here
-int totalScore = 0;
+int totalScore = 500;
+
+float P1; //position
+float P2;
+float P3;
+int fc1 ; //fruit score
+int fc2 ;
+int fc3 ;
+int  a ;  //get score
+int lucky ;  //seven
+
+
 
 // --------------------------------------------
 
@@ -50,6 +61,21 @@ void draw() {
       // put your code inside here
       
       
+      
+     
+      
+      totalScore = totalScore - 50;
+      
+      lucky =  machine.probability(0.9);
+      
+      P1 = random(6) * lucky;
+      P2 = random(6) * lucky;
+      P3 = random(6) * lucky;
+      
+      machine.setSlotFruit(0,int(P1));
+      machine.setSlotFruit(1,int(P2));
+      machine.setSlotFruit(2,int(P3));
+      
       // -------------------------------------------------
     }
     machine.roll();
@@ -63,6 +89,13 @@ void draw() {
       // -------------------------------------------------
       // put your code inside here
       
+      fc1 = machine.getSlotScore(int(P1));
+      fc2 = machine.getSlotScore(int(P2));
+      fc3 = machine.getSlotScore(int(P3));
+      
+     a = fc1 * machine.getFruitCount(int(P1))+fc2 *machine.getFruitCount(int(P2))+fc3 *machine.getFruitCount(int(P3));
+      
+      totalScore = totalScore+a;
  
  
  
@@ -83,7 +116,6 @@ void mousePressed() {
     button = !button;
   }  
 }
-
 
 
 
